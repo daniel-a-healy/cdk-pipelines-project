@@ -22,7 +22,7 @@ export class S3WebsiteCdkPipelinesPipelineStack extends Stack {
         }),
       });
       
-      /*
+      
       pipeline.addStage(new S3WebsiteCdkPipelinesStage(this, 'Test', {
         env: {
           account: '257577267527',
@@ -30,6 +30,7 @@ export class S3WebsiteCdkPipelinesPipelineStack extends Stack {
         },
       }));
 
+      /*
       pipeline.addStage(new S3WebsiteCdkPipelinesStage(this, 'Prod', {
         env: {
           account: '257577267527',
