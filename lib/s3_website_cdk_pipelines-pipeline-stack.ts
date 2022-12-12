@@ -9,8 +9,7 @@ export class S3WebsiteCdkPipelinesPipelineStack extends Stack {
   
       const pipeline = new pipelines.CodePipeline(this, 'Pipeline', {
         synth: new pipelines.ShellStep('Synth', {
-          // Use a connection created using the AWS console to authenticate to GitHub
-          // Other sources are available.
+          // points to the GitHub repo using the manually stored Secret in Secrets Manager  
           input: pipelines.CodePipelineSource.gitHub('daniel-a-healy/cdk-pipelines-project', 'main', {
             authentication: SecretValue.secretsManager('github-token'),
           }),
@@ -22,6 +21,7 @@ export class S3WebsiteCdkPipelinesPipelineStack extends Stack {
         }),
       });
       
+      // Deploys S3 Bucket Websites in each stage
       
       pipeline.addStage(new S3WebsiteCdkPipelinesStage(this, 'Test', {
         env: {
