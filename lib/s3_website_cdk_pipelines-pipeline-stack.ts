@@ -22,7 +22,7 @@ export class S3WebsiteCdkPipelinesPipelineStack extends Stack {
       });
       
       // Deploys S3 Bucket Websites in each stage
-      
+
       pipeline.addStage(new S3WebsiteCdkPipelinesStage(this, 'Test', {
         env: {
           account: '257577267527',
@@ -38,5 +38,11 @@ export class S3WebsiteCdkPipelinesPipelineStack extends Stack {
         },
       }));
       
+      pipeline.addStage(new S3WebsiteCdkPipelinesStage(this, 'Prod-West', {
+        env: {
+          account: '257577267527',
+          region: 'us-west-1',
+        },
+      }));
     }
   }
